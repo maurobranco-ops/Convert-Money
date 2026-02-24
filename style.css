@@ -99,8 +99,13 @@ section {
     color: #777777;
 }
 
-.currency-value {
+.currency-value-to-convert, .currency-value-converted {
     font-size: 20px;
     font-weight: 700;
     color: #555555;
+}
+
+.currency-img, .currency-img-converted {
+    width: 40px;
+    height: 40px;
 }

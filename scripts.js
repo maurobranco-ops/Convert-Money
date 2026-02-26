@@ -6,7 +6,7 @@ const currencyImg = document.querySelector(".currency-img")
 const currencyConvertedName = document.getElementById("currency-converted-name")
 const currencyImgConverted = document.querySelector(".currency-img-converted")
 const currencySelectToConvert = document.querySelector(".currency-select-to-convert")
-const inputCurrencyValue = document.querySelector(".input-currency") 
+const inputCurrencyValue = document.querySelector(".input-currency")
 const currencyValueToConvert = document.querySelector(".currency-value-to-convert")
 const currencyValueConverted = document.querySelector(".currency-value-converted")
 const dolarValue = 6.2
@@ -21,14 +21,11 @@ function convertValues() {
     //Sequência de conversões de  Real para as outras moedas, utilizando o valor do Real dividido pelo valor da moeda escolhida para conversão, e formatando o resultado para o formato de moeda escolhido
     if (currencySelect.value === "real") {
 
-        console.log("Moeda a ser convertida: Real")
-
         if (currencySelectConverted.value === "dolar") {
             currencyValueConverted.innerHTML = new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD"
             }).format(inputCurrencyValue.value / dolarToday)
-            console.log("Moeda convertida: Dólar Americano")
             
         }
 
@@ -64,11 +61,57 @@ function convertValues() {
             console.log("Moeda convertida: Real Brasileiro")
         }
     }
+
+    if (currencySelectConverted.value === "real") {
+
+        if (currencySelect.value === "dolar") {
+            currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            }).format(inputCurrencyValue.value * dolarToday)
+        }
+
+        if (currencySelect.value === "euro") {
+            currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            }).format(inputCurrencyValue.value * euroToday)
+        }
+
+        if (currencySelect.value === "libra") {
+            currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            }).format(inputCurrencyValue.value * libraToday)
+        }
+
+        if (currencySelect.value === "btc") {
+            currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            }).format(inputCurrencyValue.value * bitcoinToday)
+        }
+
+            if (currencySelect.value === "real") {
+                currencyValueConverted.innerHTML = new Intl.NumberFormat("pt-BR", {
+                    style: "currency",
+                    currency: "BRL"
+                }).format(inputCurrencyValue.value)
+            }
+    }
+
+
 }
+
+
+
+
+
+
 
 function changeCurrency() {
 
-    
+
     if (currencySelect.value === "dolar") {
         currencyName.innerHTML = "Dólar Americano"
         currencyImg.src = "./Assets/Dólar.png"
@@ -76,7 +119,7 @@ function changeCurrency() {
             style: "currency",
             currency: "USD"
         }).format(inputCurrencyValue.value)
-       
+
     }
     if (currencySelect.value === "euro") {
         currencyName.innerHTML = "Euro"
@@ -114,7 +157,7 @@ function changeCurrency() {
         }).format(inputCurrencyValue.value)
     }
 
-    
+
     convertValues()
 }
 
@@ -165,7 +208,7 @@ function changeCurrencyConverted() {
             currency: "BRL"
         }).format(0.00)
     }
-    
+
     convertValues()
 }
 
